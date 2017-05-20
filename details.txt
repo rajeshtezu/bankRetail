@@ -1,10 +1,5 @@
 DataBase:
 
-server: intvmsql01
-database: db03tms368_1617
-user id: pj03tms368_1617
-password: tcstvm
-
 tables:
 
 

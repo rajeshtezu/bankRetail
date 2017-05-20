@@ -1,4 +1,4 @@
-use db03tms368_1617
+
 ---------------------------------------  Employee Related Start -----------------------------------------
 create table LoginCredit_1290881(
 eid int primary key identity(10000,1),

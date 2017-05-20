@@ -1,0 +1,237 @@
+DataBase:
+
+server: intvmsql01
+database: db03tms368_1617
+user id: pj03tms368_1617
+password: tcstvm
+
+tables:
+
+
+
+credentials
+
+Account Executive:
+{
+	username: chandu
+	password: chandu123
+}
+
+teller
+{
+	username: raju
+	password: raju123
+}
+
+
+
+Database details
+--------------------
+
+
+use DB03TMS368_1617
+
+create table LoginCredit_1290881(
+eid int primary key identity(10000,1),
+etype varchar(20) check (etype='NAE' or etype='CT'),
+uname varchar(20) unique,
+pwd varchar(20),
+timestamp
+)
+
+drop table LoginCredit_1290881
+
+insert into LoginCredit_1290881(etype,uname, pwd) values('NAE','chandu', 'chandu123')
+insert into EmpDetails_1290881 values('chandra mohan jha', 'NAE', 'M', 10000)
+
+insert into LoginCredit_1290881(etype,uname, pwd) values('CT','raju', 'raju123')
+insert into EmpDetails_1290881 values('Rajesh Kumar', 'CT', 'M', 10001)
+
+create table EmpDetails_1290881(
+ename varchar(20),
+etype varchar(20) check (etype='NAE' or etype='CT'),
+gender char check (gender='M' or gender='F'),
+empid int foreign key references LoginCredit_1290881(eid) on delete cascade
+)  
+
+select * from LoginCredit_1290881
+select * from EmpDetails_1290881
+-----------------------------
+NAE-->New account executive
+CT--->Cashier/Teller
+-----------------------------
+drop table EmpDetails_1290881
+
+create proc CheckCredit_1290881(@name varchar(20), @password varchar(20))
+as
+begin
+	select eid,etype, count(*) from LoginCredit_1290881
+	where uname=@name and pwd=@password
+	group by eid,etype
+end
+
+create proc FetchEmpNameType(@eid int)
+as
+begin
+	select ename,etype from EmpDetails_1290881
+	where empid=@eid
+end
+
+
+exec FetchEmpNameType 10000
+
+
+exec CheckCredit_1290881 'chandu', 'chandu123'
+
+drop procedure CheckCredit_1290881
+
+------------------------------------- Customer Related Start -------------------------------------
+
+create table Customer(
+CustSSN numeric(9,0) unique,
+custID numeric(9,0) identity(100000000,1) primary key,
+CustName varchar(50),
+CustAge int, 
+AddrLine1 varchar(40), 
+AddrLine2 varchar(40), 
+CityName varchar(20), 
+StateId int,
+Pin numeric(6,0),
+LastUpdateDate varchar(40) default getdate()
+)
+
+drop table Customer
+insert into Customer values(123456789, 'rajesh', 24, 'hyd', 'hyd', 'hyd', 5, 123654, getdate())
+
+select * from Customer
+
+-- procedure to fecth customer data by ssn---
+create proc GetCustDataBySsn(@ssn numeric(9,0))
+as
+begin
+	select custID,CustName,CustAge,AddrLine1,AddrLine2,CityName,StateId,Pin
+	from Customer
+	where @ssn=CustSSN
+end
+
+--drop procedure GetCustDataById
+--procedure to fecth customer data by Id
+create proc GetCustDataById(@id numeric(9,0))
+as
+begin
+	select custID,CustName,CustAge,AddrLine1,AddrLine2,CityName,StateId,Pin
+	from Customer
+	where @id=custID
+end
+
+--Creating customer
+create proc CreateCustomer(@ssn numeric(9,0), @name varchar(50), @age int, @Addr1 varchar(40), @Addr2 varchar(40), 
+							@City varchar(20), @StateId int, @Pin int, @lastUpdateDate varchar(40))
+as
+begin
+	insert into Customer values(@ssn, @name, @age, @Addr1, @Addr2, @City, @StateId, @Pin, @lastUpdateDate)
+end
+
+--drop procedure CreateCustomer
+
+--Checking Existing customer by ssn
+create proc checkExistingCustBySsn(@ssn numeric(9,0))
+as
+begin
+	select count(*) from Customer
+	where CustSSN=@ssn
+end
+
+--drop procedure checkExistingCustBySsn
+--Checking Existing customer by customer id
+create proc checkExistingCustByID(@id numeric(9,0))
+as
+begin
+	select count(*) from Customer
+	where custID=@id
+end
+
+drop procedure checkExistingCustByID
+drop table Customer
+select * from CustomerDetails_1290881
+
+--------------------------------------- Customer Related End ---------------------------
+
+create table Account(
+CustId numeric(9,0),
+AccId numeric(9,0),
+AccType char check(AccType='S' or AccType='C'),
+Balance numeric,
+CrDate date,
+CrLastDate date,
+Duration numeric
+)
+
+create table Transactions_1290881(
+CustId numeric(9,0),
+AccType char check(AccType='C' or AccType='S'),
+amount numeric,
+TransDate date,
+SourceAccType char check(SourceAccType='C' or SourceAccType='S'),
+TargetAccType char check(TargetAccType='C' or TargetAccType='S'),
+)
+
+create table StateName(
+StateId int identity(100,1),
+Statename varchar(50)
+)
+
+drop table StateName
+insert into StateName values('West Bengal')
+SELECT * from StateName
+
+create proc GetStates
+as
+begin
+	select StateId, Statename from StateName
+end
+
+exec GetStates
+
+
+-------------------------------------------------  ritesh  --------------
+use db03tms368_1617
+
+select * from Customer
+
+create table CustomerMessage(
+CustSSN numeric(9,0) unique FOREIGN KEY  REFERENCES Customer(CustSSN),
+msg varchar(40)
+)
+
+select * from CustomerMessage
+
+delete from CustomerMessage where CustSSN=999999999
+
+insert into CustomerMessage values(999999999,'ritesh')
+
+alter proc checkLogin
+as
+begin
+select Customer.custID,Customer.CustSSN,Customer.CustStatus,CustomerMessage.message,Customer.LastUpdateDate
+from Customer inner join CustomerMessage
+on Customer.CustSSN=CustomerMessage.CustSSN
+end
+
+exec checkLogin
+
+sp_helptext checkLogin
+-------------------------------------------------------------------------
+
+Chandra Mohan
+
+
+create table Transactions_BankRetailMS(
+txnID numeric(9,0) identity(100000000,1) primary key,
+accID numeric(9,0),
+TransAmount numeric,
+TransDate datetime,
+transactionType char check(transactionType='D' or transactionType='W' or transactionType='T'),
+sourceAccount numeric(9,0) references Account(AccId),
+TargetAccount numeric(9,0) references Account(AccID),
+)

@@ -1,0 +1,63 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login.Master.cs" Inherits="BankRetail.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title> Login :: ABC Bank </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="Asset/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Asset/FontAwesome/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="Asset/Content/Site.css" rel="stylesheet" />
+    <script src="../Asset/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="../Asset/Scripts/bootstrap.min.js"></script>
+    <script src="../Asset/Scripts/angular.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <%-- Logo division --%>
+        <nav class="navbar navbar-default navTop" runat="server">
+            <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                      </button>
+                      <p class="navbar-brand" >
+                          <asp:Label CssClass="navText" runat="server">
+                              <asp:Image ID="Image2" ImageUrl="~/Asset/images/logo.jpg" CssClass="navImage" runat="server" />
+                              
+                          </asp:Label>
+                      </p>
+                  </div>
+                  <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+    </nav>
+
+        <%-- Content from Login.aspx --%>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <%-- Login Footer --%>
+        <footer class="footer">
+        <div class="container-fluid">
+            <p class="text-muted">&copy;&nbsp;<asp:Label ID="cpyrtYear" Text="" runat="server"></asp:Label>
+                ABC Bank</p>
+        </div>
+    </footer>
+    </form>
+
+    <script src="Asset/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Asset/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

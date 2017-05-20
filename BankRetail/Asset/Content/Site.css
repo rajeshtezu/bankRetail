@@ -1,0 +1,380 @@
+﻿body {
+    
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default /
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+    */
+nav 
+{
+    margin-bottom: 20px;
+}
+
+.navTop
+{
+    background-color: #4b0082;
+    padding: 15px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.navbar-default .navbar-nav>li>a 
+{
+    color: white;
+}
+
+.navbar-default .navbar-brand
+{
+    color: white;
+}
+
+.navbar-brand
+{
+    display: inline;
+    position: relative;
+}
+
+.navImage
+{
+    width: 130px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.navText
+{
+    font-size: 30px;
+    color:white;
+    cursor: default;
+}
+
+.footer
+{
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    margin-top: 50px;
+    background-color: #4b0082;
+    color: white;
+}
+
+.text-muted
+{
+    color: #fff;
+    padding-left: 35%;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.navText span:hover, .navText:hover, navbar-brand:hover 
+{
+    color: white;
+}
+
+.navText1
+{
+    font-size: larger;
+}
+
+.navbar-default .navbar-nav>li>a:hover:hover
+{
+    color: white;
+}
+
+.sideNav
+{
+    position:absolute;
+}
+
+.navLink
+{
+    background-color: #4b0082;
+    color: #fff;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.navLink:hover
+{
+    background-color: #fff;
+    color: #4b0082;
+}
+
+.fa
+{
+    margin-left: 23px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.sideNavtext
+{
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.bodyContent
+{
+    margin-left: 50px;
+}
+
+.noScroll
+{
+    position:absolute;
+    z-index: auto;
+    left: auto;
+    right: 0px;
+    margin-top: 30px;
+    bottom: auto;
+    background-color: #4b0082;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.errorText
+{
+    font-size: 16px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-weight: bold;
+}
+
+.validationError
+{
+    position: relative;
+}
+
+#SSNSizeCheck,#SSNRequiredCheck
+{
+    position: absolute;
+}
+
+.formGroupCustom
+{
+    margin-bottom: 0px;
+}
+
+.loginSide1
+{
+    margin-left: 20px;
+    border-top-color: #3d53b0;
+    border-top: 5px solid;
+}
+
+.loginSide2
+{
+    background-color: #3d53b0;
+    border-radius: 10px;
+    padding-top: 18px;
+    margin-left: 20px;
+}
+
+.forgetLink
+{
+    float: right;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.jumboBorder
+{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border: 5px solid;
+    border-color: blue;
+    margin-top: 20px;
+}
+
+.top100
+{
+    margin-top: 110px;
+}
+
+.top
+{
+    margin-top: 200px;
+}
+
+.space
+{
+    margin-top: 210px;
+    margin-bottom: auto;
+}
+
+.formLine
+{
+    display: inline;
+    margin: 20px;
+    border-spacing: 20px 20px 20px 20px;
+    border-radius: 15px;
+}
+
+.loginJumbo
+{
+    background-color: #3d53b0;
+    color: white;
+    border-radius: 15px;
+}
+
+.customJumbo
+{
+    padding-bottom: 20px;
+    padding-top: 25px;
+}
+
+.jumboText
+{
+    background-color: cadetblue;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 0px;
+}
+
+.homeBody
+{
+    margin-left: 47%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.hexagons
+{
+    margin-left: 20%;
+}
+
+#hexagons
+{
+    position: relative;
+}
+
+#textOverImage1
+{
+    z-index:100;
+    position:absolute;    
+    color:black;
+    font-size:12px;
+    left:210px;
+    top:151px;
+    visibility: hidden;
+}
+
+.faOverImage1
+{
+    position:absolute;    
+    color:white;
+    left:290px;
+    top:120px;
+    visibility: visible;
+}
+
+.faOverImage1:hover
+{
+    display: none;
+}
+
+
+.formLabel
+{
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.textBox
+{
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 2%;
+}
+
+.glyphicon
+{
+    color: green;
+    padding: 12px;
+    margin-right: 0px;
+}
+
+.dropUL
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.dropdown-toggle
+{
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-menu
+{
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-menu
+{
+    display: block;
+    background-color: #3d53b0;
+    color: white;
+    cursor: default;
+}
+
+.navbar-default li
+{
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a:visited
+{
+    color: white;
+    background-color: #3d53b0;
+}
+
+.dropdown-menu>li>a
+{
+    color: unset;
+}
+
+#dropdownMenuButton
+{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.formButton
+{
+    width: 100%;
+    padding-left: unset;
+    padding-right: 0px;
+    margin-left: 10px;
+    margin-right: 15px;
+    margin-top: 25px;
+}

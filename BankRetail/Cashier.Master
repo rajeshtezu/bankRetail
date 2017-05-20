@@ -1,0 +1,130 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Cashier.master.cs" Inherits="BankRetail.Cashier" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title id="masterTitle" runat="server">ABC Bank </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="Asset/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Asset/FontAwesome/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="Asset/Content/Site.css" rel="stylesheet" />
+    <script src="../Asset/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="../Asset/Scripts/bootstrap.min.js"></script>
+    <script src="../Asset/Scripts/angular.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-default navTop" runat="server">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <p class="navbar-brand">
+                        <asp:Label CssClass="navText" runat="server">
+                            <asp:Image ID="Image2" ImageUrl="~/Asset/images/logo.jpg" CssClass="navImage" runat="server" />
+                            
+                        </asp:Label>
+                    </p>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <!--form class="navbar-form navbar-left">
+                          <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Search">
+                          </div>
+                          <button type="submit" class="btn btn-default">Submit</button>
+                      </!--form-->
+                    <ul class="nav navbar-nav navbar-right">
+                        <%--<li><a href="#" class="navText1">Notifications&nbsp;<span class="badge">42</span></a></li>--%>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle navText1" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <asp:Label Text="" ID="emp_name_display" runat="server"></asp:Label>
+                                <span class="caret"></span>
+                            </a>
+                            <%--<asp:DropDownList CssClass="dropdown-menu form-control" ID="DropDownList2" runat="server">
+                                  <asp:ListItem Selected="True">Employee Name</asp:ListItem>
+                                  <asp:ListItem>View Profile</asp:ListItem>
+                                  <asp:ListItem CssClass="dropdown-item" Text="Change Profile"></asp:ListItem>
+                                  <asp:ListItem CssClass="dropdown-item" Text=""></asp:ListItem>
+                                  <asp:ListItem CssClass="dropdown-item" Text="Log Out"></asp:ListItem>
+                              </asp:DropDownList>--%>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li class="dropdown-item">
+                                    <asp:HyperLink ID="myProfile" runat="server" NavigateUrl="~/AccountManagement/myProfile.aspx" CssClass="dropUL">My Profile</asp:HyperLink></li>
+                                <li class="dropdown-item">
+                                    <asp:HyperLink ID="changePassword" runat="server" NavigateUrl="~/AccountManagement/changePassword.aspx" CssClass="dropUL">Change Password</asp:HyperLink></li>
+                                <li class="divider" role="separator"></li>
+                                <li class="dropdown-item">
+                                    <asp:HyperLink ID="logOut" runat="server" NavigateUrl="~/AccountManagement/logOut.aspx" CssClass="dropUL">Log Out</asp:HyperLink>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+        <%--Side Scroll Displaying Name and Designation--%>
+        <div class="noScroll jumbotron">
+            <span class="fa fa-user fa-5x"></span>
+            <p>
+                <asp:Label ID="emp_name" Text="" runat="server"></asp:Label><br />
+                <asp:Label ID="EmpType" runat="server" Text=""></asp:Label>
+            </p>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <nav class="col-lg-1">
+                    <ul class="nav nav-pills nav-stacked sideNav" data-spy="affix" data-offset-top="205">
+                        <li>
+                            <asp:HyperLink CssClass="navLink" ID="home" runat="server" NavigateUrl="~/CashierTeller/Home.aspx"><i class="fa fa-home fa-5x"></i><p class="sideNavtext">Home</p></asp:HyperLink></li>
+                        <li>
+                            <asp:HyperLink CssClass="navLink" ID="customerDetails" runat="server" NavigateUrl="~/CashierTeller/CustomerSearch.aspx"><i class="fa fa-user-o fa-5x"></i><p class="sideNavtext">Customer</p></asp:HyperLink></li>
+                        <li>
+                            <asp:HyperLink CssClass="navLink" ID="transfer" runat="server" NavigateUrl="~/CashierTeller/Transfer.aspx"><i class="fa fa-exchange fa-5x"></i><p class="sideNavtext">Transfer</p></asp:HyperLink></li>
+                        <li>
+                            <asp:HyperLink CssClass="navLink" ID="accountStatement" runat="server" NavigateUrl="~/CashierTeller/Statement.aspx"><i class="fa fa-list fa-5x"></i><p class="sideNavtext">Statement</p></asp:HyperLink></li>
+                        <%--<li class="dropdown">
+                         <a class="dropdown-toggle navLink" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                           <li><a href="#section41" class="navLink">Section 4-1</a></li>
+                           <li><a href="#section42" class="navLink">Section 4-2</a></li>
+                         </ul>
+                       </li>--%>
+                    </ul>
+                </nav>
+                <div class="col-lg-7 bodyContent">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+        <div>
+            
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="text-muted">
+                    &copy;&nbsp;<asp:Label ID="cpyrtYear" Text="" runat="server"></asp:Label>
+                    ABC Bank
+                </p>
+            </div>
+        </footer>
+    </form>
+
+</body>
+</html>
